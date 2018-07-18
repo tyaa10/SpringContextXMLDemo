@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Reference types constructor n properties -->
+	<bean id="warrior_unit" class="builder.Unit">
+		<!-- Unit(IPerson _person, ITool _tool) -->
+		<constructor-arg type="interfaces.IPerson" ref="warrior"></constructor-arg>
+		<constructor-arg type="interfaces.ITool" ref="sword"></constructor-arg>
+		<!-- getTool/setTool -->
+		<!-- <property name="tool" ref="plow"></property> -->
+	</bean>
+	
+	<!-- Value types constructor n properties -->
+	<bean id="warrior_unit2" class="builder.Unit">
+		<!-- Unit(String _nationality, int _level) -->
+		<constructor-arg value="Chinese" index="0" type="String"></constructor-arg>
+		<constructor-arg value="5" index="1" type="int"></constructor-arg>
+		<!-- getTool/setTool -->
+		<property name="person" ref="peasant"></property>
+		<property name="tool" ref="plow"></property>
+	</bean>
+	
+	<!-- Value types constructor n properties with schema p -->
+	<bean id="warrior_unit3" class="builder.Unit"
+		p:person-ref="peasant" p:tool-ref="sword">
+		<!-- Unit(String _nationality, int _level) -->
+		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
+		<constructor-arg value="3" index="1" type="int"></constructor-arg>
+	</bean>
+
+	<bean id="peasant" class="implementations.Peasant"></bean>
+	<bean id="warrior" class="implementations.Warrior"></bean>
+	
+	<bean id="sword" class="implementations.Sword"></bean>
+	<bean id="plow" class="implementations.Plow"></bean>
+</beans>
