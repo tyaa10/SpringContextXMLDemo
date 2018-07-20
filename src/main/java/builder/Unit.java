@@ -60,4 +60,14 @@ public class Unit implements IUnit{
 		
 		System.out.printf("Nationality: %s; level: %d\n", mNationality, mLevel);
 	}
+	
+	public void onInit() {
+		
+		System.out.println("init " + this.toString());
+	}
+	
+	public void onDestroy() {
+		
+		System.out.println("destroy " + this.toString());
+	}
 }

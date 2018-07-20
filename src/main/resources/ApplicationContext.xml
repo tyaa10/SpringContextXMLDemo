@@ -2,7 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	>
+	<!-- default-lazy-init="true" -->
 
 	<!-- Reference types constructor n properties -->
 	<bean id="warrior_unit" class="builder.Unit">
@@ -26,6 +28,25 @@
 	<!-- Value types constructor n properties with schema p -->
 	<bean id="warrior_unit3" class="builder.Unit"
 		p:person-ref="peasant" p:tool-ref="sword">
+		<!-- Unit(String _nationality, int _level) -->
+		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
+		<constructor-arg value="3" index="1" type="int"></constructor-arg>
+	</bean>
+	
+	<!-- Value types constructor n properties with schema p with prototype scope -->
+	<bean id="warrior_unit3_prototype" class="builder.Unit"
+		p:person-ref="peasant" p:tool-ref="sword"
+		scope="prototype">
+		<!-- Unit(String _nationality, int _level) -->
+		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
+		<constructor-arg value="3" index="1" type="int"></constructor-arg>
+	</bean>
+	
+	<!-- Value types constructor n properties with schema p with life cycle methods -->
+	<bean id="warrior_unit4" class="builder.Unit"
+		p:person-ref="peasant" p:tool-ref="sword"
+		init-method="onInit"
+		destroy-method="onDestroy">
 		<!-- Unit(String _nationality, int _level) -->
 		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
 		<constructor-arg value="3" index="1" type="int"></constructor-arg>
