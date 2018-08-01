@@ -51,6 +51,17 @@
 		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
 		<constructor-arg value="3" index="1" type="int"></constructor-arg>
 	</bean>
+	
+	<!-- Value types constructor n properties with schema p with life cycle methods n singleton scope -->
+	<bean id="warrior_unit5" class="builder.Unit"
+		p:person-ref="peasant" p:tool-ref="sword"
+		init-method="onInit"
+		destroy-method="onDestroy"
+		scope="singleton">
+		<!-- Unit(String _nationality, int _level) -->
+		<constructor-arg value="Russian" index="0" type="String"></constructor-arg>
+		<constructor-arg value="3" index="1" type="int"></constructor-arg>
+	</bean>
 
 	<bean id="peasant" class="implementations.Peasant"></bean>
 	<bean id="warrior" class="implementations.Warrior"></bean>
