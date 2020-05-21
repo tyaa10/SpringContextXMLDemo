@@ -10,7 +10,7 @@ public class Main {
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		
-		Unit warriorUnit = (Unit) context.getBean("warrior_unit3");
+		Unit warriorUnit = (Unit) context.getBean("warrior_unit");
 		
 		warriorUnit.show();
 		warriorUnit.say("Hello");
@@ -26,11 +26,11 @@ public class Main {
 		System.out.println(warriorUnitPrototype);
 		System.out.println(warriorUnitPrototype2);*/
 		
-		Unit warriorUnit4 = (Unit) context.getBean("warrior_unit4");
-		System.out.println(warriorUnit);
-		System.out.println(warriorUnit4);
+		// Unit warriorUnit4 = (Unit) context.getBean("warrior_unit4");
+		// System.out.println(warriorUnit);
+		// System.out.println(warriorUnit4);
 		
-		warriorUnit4 = null;
+		// warriorUnit4 = null;
 	}
 
 }
